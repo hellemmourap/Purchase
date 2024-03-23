@@ -10,6 +10,14 @@ editar e excluir pedidos.
 - Entity Framework Core
 - SqlServer
 
+## Pré-requisitos
+- **SDK do .NET Core**: Você precisa ter o SDK do .NET Core instalado em sua máquina. Você pode baixá-lo [aqui](https://dotnet.microsoft.com/download).
+- **SQL Server Management Studio (SSMS)**: para gerenciar e interagir diretamente com o banco de dados.
+
+## Dependências
+- **Microsoft.EntityFrameworkCore.SqlServer**:  Ele fornece os componentes necessários para permitir que o Entity Framework Core se comunique com um banco de dados SQL Server.
+- **Microsoft.EntityFrameworkCore.Tools**: Fornece acesso aos comandos do Entity Framework Core no terminal ou prompt de comando, facilitando o gerenciamento do seu banco de dados e do modelo de dados.
+  
 # Como Executar o Projeto
 1. **Clonar o Repositório**: Clone este repositório em sua máquina local.
 2. **Configurar o Ambiente**: Certifique-se de ter o ambiente .NET Core configurado em sua máquina.
@@ -20,6 +28,11 @@ editar e excluir pedidos.
 # Observações
 No projeto, o acesso às páginas é feito por meio de rotas. Uma rota é um caminho específico dentro da nossa aplicação que leva a uma determinada página. 
 Por exemplo, se quisermos acessar a página de login de produtos, digitamos "/Product/Login" na barra de endereço do navegador.
+
+Ao executar o projeto e ter acesso ao aplicativo, certifique-se de editar a url como esta abaixo.
+
+Exemplo: 
+- localhost/{NomeDoControlador}/{NomeDaAção} : localhost/Product/Login
 
 "Product" é o controlador que está lidando com essa solicitação.
 "Login" é a ação dentro desse controlador, ou seja, a função que é executada para lidar com a solicitação de login.
