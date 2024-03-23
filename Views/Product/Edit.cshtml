@@ -1,0 +1,34 @@
+﻿@model Purchase.Models.ProductModel
+
+@{
+    ViewData["Title"] = "Editar Produto";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Code">Código</label>
+        <input asp-for="Code" class="form-control" />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name">Nome</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Valor Unitário</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>
+            <input type="checkbox" asp-for="IsActive" />
+            Ativo
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>

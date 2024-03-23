@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Purchase.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <form asp-action="Create" method="get">
+        <button type="submit" class="btn btn-success">Adicionar Produto</button>
+    </form>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Valor Unitário</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Code</td>
+                <td>@product.Name</td>
+                <td>@product.Price.ToString("C2")</td>
+                <td>@(product.IsActive ? "Sim" : "Não")</td>
+                <td>
+                    @if (product.IsActive)
+                    {
+                        <form asp-action="Edit" asp-route-id="@product.Id" method="get">
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
+                     }
+                    else
+                    {
+                        <form asp-action="Reactivate" method="post">
+                            <input type="hidden" name="id" value="@product.Id" />
+                            <button type="submit" class="btn btn-danger">Reativar</button>
+                        </form>
+                    }                                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

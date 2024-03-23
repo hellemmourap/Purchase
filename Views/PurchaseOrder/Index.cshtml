@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Purchase.Models.PurchaseOrder>
+
+<h1>Lista de Pedidos de Compra</h1>
+
+<p>
+    <form asp-action="Create" method="get">
+        <button type="submit" class="btn btn-success">Adicionar Pedido</button>
+    </form>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fornecedor</th>
+            <th>Observações</th>
+            <th>Status</th>
+            <th>Data de Criação</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var purchaseOrder in Model)
+        {
+            <tr>
+                <td>@purchaseOrder.Id</td>
+                <td>@purchaseOrder.Supplier.Name</td>
+                <td>@purchaseOrder.Observations</td>
+                <td>@purchaseOrder.Status</td>
+                <td>@purchaseOrder.CreationDate</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Ações">
+                        <a href="@Url.Action("Edit", new { id = purchaseOrder.Id })" class="btn btn-primary">Editar</a>
+                        <a href="@Url.Action("Delete", new { id = purchaseOrder.Id })" class="btn btn-danger">Excluir</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

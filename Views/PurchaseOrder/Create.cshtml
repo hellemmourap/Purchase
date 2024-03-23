@@ -1,0 +1,55 @@
+﻿@model Purchase.Models.PurchaseOrder
+
+<h1>Adicionar Pedido de Compra</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Fornecedor</label>
+        <select asp-for="Supplier.Name" class="form-control">
+            @foreach (var supplier in ViewBag.Suppliers)
+            {
+                <option value="@supplier.Name">@supplier.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Observações</label>
+        <input asp-for="Observations" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="Ativo">Ativo</option>
+            <option value="Finalizado">Finalizado</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <h3>Itens do Pedido</h3>
+        <div id="items-container">
+            <div class="item">
+                <div class="form-group">
+                    <label>Produto</label>
+                    <select name="Items[0].ProductId" class="form-control">
+                        @foreach (var product in ViewBag.Products)
+                        {
+                            <option value="@product.Id">@product.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantidade</label>
+                    <input type="number" name="Items[0].Quantity" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Valor Unitário</label>
+                    <input type="text" name="Items[0].UnitPrice" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <button type="button" id="add-item" class="btn btn-primary">Adicionar Item</button>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
